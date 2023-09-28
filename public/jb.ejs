@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOURNEY BOOK QUESTION</title>
+    <!-- META -->
+    <meta name="title" content="JOURNEY BOOK">
+    <meta name="description" content="description">
+    <link rel="icoc" href="#ICON">
+    <!-- TAILWIND OUTPUT -->
+    <link rel="stylesheet" href="style/output.css">
+    <script src="javascript/queryDOM.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="h-screen w-full bg-gray-950 bg-cover bg-no-repeat bg-center"
+style="background-image: linear-gradient(rgba(0, 0, 0, 0.481) , #09090b) , url(images/three-friends-with-their-arms-around-sitting-top-mountain.jpg);
+    box-shadow: 0rem 0rem 10rem 5rem black inset;">
+    <% if (user.length != 0 && uniword.length != 0) { %>
+        <div class="fixed text-slate-100 w-full h-fit mt-5">
+            <div class="max-w-3xl mx-auto">
+                <div class="w-full flex bg-teal-700 overflow-hidden rounded-md alert-off" id="alert"
+                style="transition: all 0.5s ease;">
+                    <div class="w-fit p-3 flex justify-center items-center mr-4 bg-slate-300 ">
+                        <i class="fa-regular fa-bell text-3xl" style="color: #042f4e;"></i>
+                    </div>
+                    <div class="py-3">
+                        <h3 class="text-xl font-semibold">Notification : Berhasil Login</h3>
+                        <p class="font-light">Wellcome bolo kamu masuk sebagai <%= user %> : <%=uniword %> </p>
+                    </div>
+                    <div class="w-fit flex justify-center items-center ml-auto pr-5">
+                        <i class="fa-solid fa-xmark text-3xl cursor-pointer" style="color: #EEEEEEEE;"  id="close-alert"></i>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    <% } %>
+    <% if (user.length == 0 && uniword.length == 0) { %>
+        <div class="fixed text-slate-100 w-full h-fit mt-5">
+            <div class="max-w-3xl mx-auto">
+                <div class="w-full flex bg-teal-700 overflow-hidden rounded-md alert-off" id="alert"
+                style="transition: all 0.5s ease;">
+
+                    <div class="w-fit p-3 flex justify-center items-center mr-4 bg-slate-300 ">
+                        <i class="fa-regular fa-bell text-3xl" style="color: #042f4e;"></i>
+                    </div>
+                    <div class="py-3">
+                        <h3 class="text-xl font-semibold">Notification : Tanpa Login</h3>
+                        <p class="font-light">Wellcome bolo kamu masuk sebagai Anonim. Login untuk komen ya bolo </p>
+                    </div>
+                    <div class="w-fit flex justify-center items-center ml-auto pr-5">
+                        <i class="fa-solid fa-xmark text-3xl cursor-pointer" style="color: #EEEEEEEE;"  id="close-alert"></i>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    <% } %>
+    <script>
+        $$('#alert').forEach(element => {
+            setTimeout (function () {
+                element.remove('alert-off')
+            } , 20)
+            let interval = setTimeout(function () {
+                element.add('alert-off')
+            } , 5000);
+            $$('#close-alert').forEach((button , index) => {
+                button.on('click' , function () {
+                    clearInterval(interval);
+                    element.add('alert-off')
+                });
+            });
+        });
+    </script>
+</body>
+</html>

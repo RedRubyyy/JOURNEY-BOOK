@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .button-transition {
+        transition: all 0.3s ease;
+    }
+    .alert-off {
+        transform: translateY(-5rem);
+        opacity: 0;
+    }
+    .navbar-active {
+        animation: on-navigation-move 0.3s forwards;
+        animation-timing-function: ease;
+    }
+    .navbar-nonactive {
+        animation: off-navigation-move 0.3s forwards;
+        animation-timing-function: ease;
+    }
+    .form-active {
+        animation: form-active 0.5s forwards;
+        animation-timing-function: ease;
+    }
+    @keyframes on-navigation-move {
+        from {
+            transform: translateX(-1rem);
+            opacity : 0;       
+        } to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes off-navigation-move {
+        from {
+            transform: translateX(0);
+            opacity : 1;
+        } to {
+            transform: translateX(-1rem);
+            opacity: 0;
+        }
+    }
+    @keyframes form-active {
+        from {
+            transform: translateY(3rem);
+            opacity: 0;
+        } to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}

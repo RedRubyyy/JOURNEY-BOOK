@@ -1,0 +1,26 @@
+{
+  "name": "journey-book",
+  "version": "1.0.0",
+  "description": "OUR JOURNEY WEBSITE",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tw-start": "npx tailwindcss -i ./public/style/input.css -o ./public/style/output.css --watch",
+    "tw-minify": "npx tailwindcss -o ./public/style/output.css --minify"
+  },
+  "author": "N PAKE OPAL",
+  "license": "ISC",
+  "devDependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "helmet": "^7.0.0",
+    "mongoose": "^7.5.3",
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.3",
+    "validator": "^13.11.0"
+  }
+}

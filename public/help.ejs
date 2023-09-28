@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOURNEY BOOK QUESTION</title>
+    <!-- META -->
+    <meta name="title" content="JOURNEY BOOK">
+    <meta name="description" content="description">
+    <link rel="icoc" href="#ICON">
+    <!-- TAILWIND OUTPUT -->
+    <link rel="stylesheet" href="style/output.css">
+</head>
+<body>
+    <div id="content">
+<!-- HADER -->
+<header class="w-100 h-screen bg-cover bg-center bg-no-repeat" 
+style="background-image: linear-gradient(rgba(0, 0, 0, 0.481) , #09090b) , url(images/cheerful-boy-girl-blackboard.jpg);
+    box-shadow: 0rem 0rem 10rem 5rem black inset;">
+<div class="h-screen w-100 backdrop-blur-xs">
+    <main class="max-w-xl mx-auto text-center text-[#F2E7D5] pt-240 sm:text-md text-xs" id="main-header-box"
+        style="transform: translateY(3rem); opacity: 0;">
+        <h1 class="font-semibold sm:text-6xl text-4xl text-teal-500 mb-2">THE JOURNEY BOOK</h1>
+        <p class="font-normal sm:text-xl text-md mb-14">YOUR TITLE FOR JOURNEY BOOK WEBSITE</p>
+        ========== STARTED NOW ==========
+        <div class="mt-8 max-w-lg text-center mx-auto flex justify-evenly text-lg"
+             id="button-box" style="transform: translateY(3rem); opacity: 0;">
+            <a href="" class="w-2/5 sm:py-2 py-1 bg-teal-600 sm:rounded-xl rounded-md hover:bg-teal-700 shadow-2xl button-transition">CREDIT</a>
+            <a href="/journey-book" class="w-2/5 sm:py-2 py-1 bg-teal-600 sm:rounded-xl rounded-md hover:bg-teal-700 shadow-2xl button-transition"
+            id="jump-button-to-journey-book">KEPOIN</a>
+        </div>
+    </main>
+</div>
+</header>
+
+<!-- LANDING BLEND -->
+<div class="w-100 py-10"style="background: linear-gradient( #000000 , #09090b);"></div>
+
+<!-- CREDIT PAGE -->
+<section id="credit-page" class="w-full py-5 bg-teal-600" 
+style="background: linear-gradient(#09090b , rgb(17 24 39));">
+    <main class="max-w-5xl m-auto py-5">
+
+        <div class="flex md:justify-between md:flex-row flex-col justify-center w-100">
+            <div class="text-[#F2E7D5] ml-5 pr-10 break-words m-auto"
+            id="text-box" style="transform: translateX(-7rem); opacity: 0;">
+                <h2 class="text-4xl ml-10 font-semibold mb-5">- CREDIT -</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, dolor tempora? Eos dolorum nam ea quidem quis asperiores sed accusantium? , Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, sint.</p>
+
+            </div>
+            <div class="mr-5" id="img-frame" 
+            style="transform: translateY(5rem); opacity: 0;">
+                <img src="images/friends-spending-time-together.jpg" alt="" width="1000px" 
+                    class="shadow-slate-900 shadow-md rounded-md object-cover object-center ">
+            </div>
+        </div>
+
+    </main>
+</section>
+
+<!-- LANDING BLEND -->
+<div class="w-100 py-10"style="background: linear-gradient( rgb(17 24 39) , #09090b);"></div>
+
+<section class="w-full py-40 bg-zinc-950 ">
+    <div class="max-w-xl mx-auto">
+        <div class="flex justify-between w-full mx-auto ">
+            <img src="images/Logo_frisianflag.png" alt="LOGO 1" class="h-48 w-fit">
+            <img src="images/Logo_Indomie.png" alt="LOGO 2" class="h-48 w-fit">
+        </div>
+    </div>
+    
+</section>
+
+<!-- FOOTER -->
+<footer class="w-full py-3 text-center bg-teal-800 text-[#F2E7D5] flex items-center justify-center">
+    Made with 
+    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="mx-1">
+        <style>svg{fill:#f2e7d5}</style>
+        <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+    </svg>
+    by <a href="" class="ml-1" >Opal</a>  
+</footer>
+    </div>
+    
+<script src="utils/animation.js"></script>
+<script>
+GLOBAL_FUNCTION = function() {
+    animationGroup($('#main-header-box') , function (parrentE) {
+        parrentE.fade(1000 , 'Y')
+        $('#button-box').fade(1000 , 'Y' , {
+            delay : 100
+        })
+    } , function () {
+        $('#button-box').style.transform = 'translateY(3rem)';
+        $('#button-box').style.opacity  = '0'
+
+        $('#main-header-box').style.transform = 'translateY(3rem)';
+        $('#main-header-box').style.opacity  = '0'
+    })
+
+    animationGroup ($('#credit-page') , function (parrentE) {
+        $('#text-box').fade(1000 , 'x')
+        $('#img-frame').fade(900 , 'y')
+    } , function () {
+        $('#img-frame').style.transform = 'translateY(5rem)';
+        $('#img-frame').style.opacity = '0'
+
+        $('#text-box').style.transform = 'translateX(-7rem)';
+        $('#text-box').style.opacity = '0';
+    })
+    
+    console.log($('#credit-page').getBoundingClientRect())
+    console.log( window.innerHeight)
+}
+
+window.onload = GLOBAL_FUNCTION;
+window.onscroll = GLOBAL_FUNCTION;
+
+
+    </script>
+</body>
+</html>
