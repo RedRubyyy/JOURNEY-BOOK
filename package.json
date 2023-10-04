@@ -4,7 +4,7 @@
   "description": "OUR JOURNEY WEBSITE",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon app.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tw-start": "npx tailwindcss -i ./public/style/input.css -o ./public/style/output.css --watch",
     "tw-minify": "npx tailwindcss -o ./public/style/output.css --minify"

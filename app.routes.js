@@ -1,46 +1,45 @@
 // LOCAL UTILS
-const vl = require('./utils/validation')
+const vl = require('./utils/data.validation')
+const post = require('./app.post.js')
 
+// DATABASES
+const {connectToDatabase , models , connection} = require('./databases/db.connect')
+const {Client , Admin} = models;
+// MAIN FUNCTION
 module.exports = async (app , express) => {
     const Router = express.Router()
-
     Router.get('/' , (req , res) => {
         res.render('index.ejs')
-    })
+    });
+    Router.get('/user-gateway-login' , (req , res) => {
+        res.render('login.ejs' , {
+            messageIn : req.flash('message-in'),
+        })
+    });
+    Router.get('/user-gateway-signup' , (req , res) => {
+        res.render('sign.ejs' , {
+            messageUp : req.flash('message-up')
+        })
+    });
+    Router.post('/user-login-processing' , async (req , res) => {
+        const database = await Client.find()
+            .catch(error => console.error(error.message));
+        post.userLogin(req , res , database)
+    });
 
-    Router.get('/user-gateway' , (req , res) => {
-        res.render('form.ejs' , {message : req.flash('message')})
-    })
+    Router.post('/user-sign-processing' , async (req , res) => {
+        const database = await Client.find()
+            .catch(error => console.error(error.message));
+        post.userSignup(req , res , database)
+    });
 
-    Router.post('/user-gateway-post' , (req , res) => {
-        const keys = Object.keys(req.body);
-        const uname = keys.includes('username');
-        const uniwd = keys.includes('uniword');
-        if (uname && uniwd) {
-            const result = vl.clientValidation(req.body);
-            req.flash('username' , req.body.username);
-            req.flash('uniword' , req.body.uniword);
-            result.status
-                ? "escape"
-                : req.flash('message' , result.message);
-            
-            result.status 
-                ? res.redirect('/journey-book') 
-                : res.redirect('/user-getway' );
-        } else {
-            res.send('KAMU COBA APASIH WIR :)');
-        }
-    })
-
-    Router.post('/admin-login-post' , (req , res) => {
-        res.json(req.body)
-    })
-
-    Router.get('/journey-book' , (req , res) => {
-        res.render('jb.ejs' , {
+    Router.get('/main' , (req , res) => {
+        const sendVar = {
             user : req.flash('username') ,
-            uniword : req.flash('uniword')
-        });
+            uniword : req.flash('uniword'),
+            cookie : req.flash('cookie')
+        }
+        res.render('main.ejs' , sendVar);
     })
-    app.use("/" , Router)
-}
+    app.use("/" , Router);    
+};

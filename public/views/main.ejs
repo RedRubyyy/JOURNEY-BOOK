@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,9 @@
 <body class="h-screen w-full bg-gray-950 bg-cover bg-no-repeat bg-center"
 style="background-image: linear-gradient(rgba(0, 0, 0, 0.481) , #09090b) , url(images/three-friends-with-their-arms-around-sitting-top-mountain.jpg);
     box-shadow: 0rem 0rem 10rem 5rem black inset;">
+    <% if (cookie.length != 0 ) { %>
+        <script>document.cookie = '"cookie=<%= cookie %>; expires=Thu, 1 jan 2060 12:00:00 UTC;'</script>
+    <% } %>
     <% if (user.length != 0 && uniword.length != 0) { %>
         <div class="fixed text-slate-100 w-full h-fit mt-5">
             <div class="max-w-3xl mx-auto">

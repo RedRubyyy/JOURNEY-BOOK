@@ -1,0 +1,19 @@
+user input => validation => add to db
+
+validation : need arg from db connection
+cookie : need arg from db connection 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+route login/sign => validation => main gate

@@ -13,6 +13,8 @@
     <script src="javascript/queryDOM.js"></script>
 </head>
 <body>
+
+
     <div id="content">
 <!-- HADER -->
 <header class="w-100 h-screen bg-cover bg-center bg-no-repeat" 
@@ -27,13 +29,19 @@ style="background-image: linear-gradient(rgba(0, 0, 0, 0.481) , #09090b) , url(i
         <div class="mt-8 max-w-lg text-center mx-auto flex justify-evenly text-lg"
              id="button-box" style="transform: translateY(3rem); opacity: 0;">
             <a href="" class="w-2/5 sm:py-2 py-1 bg-teal-600 sm:rounded-xl rounded-md hover:bg-teal-700 shadow-2xl button-transition">CREDIT</a>
-            <a href="/user-gateway" class="w-2/5 sm:py-2 py-1 bg-teal-600 sm:rounded-xl rounded-md hover:bg-teal-700 shadow-2xl button-transition"
-            id="jump-button-to-journey-book">KEPOIN</a>
+            <a href="/user-gateway-login"  class="w-2/5 sm:py-2 py-1 bg-teal-600 sm:rounded-xl rounded-md hover:bg-teal-700 shadow-2xl button-transition" 
+                id="jump-page">KEPOIN</a>
+            
+            
         </div>
     </main>
 </div>
 </header>
-
+<script>
+    if (document.cookie !== "") {
+        document.querySelector('#jump-page').href = "/main"
+    };
+</script>
 <!-- LANDING BLEND -->
 <div class="w-100 py-10"style="background: linear-gradient( #000000 , #09090b);"></div>
 <div class="w-100 py-10"style="background: linear-gradient( #09090b , #020617);"></div>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOURNEY BOOK QUESTION</title>
+    <!-- META -->
+    <meta name="title" content="JOURNEY BOOK">
+    <meta name="description" content="description">
+    <link rel="icoc" href="#ICON">
+    <!-- TAILWIND OUTPUT -->
+    <link rel="stylesheet" href="style/output.css">
+    <script src="javascript/queryDOM.js"></script>
+    <!-- FONT AWESSOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="h-screen w-full bg-gray-950 bg-cover bg-no-repeat bg-center"
+style="background-image: linear-gradient(rgba(0, 0, 0, 0.481) , #09090b) , url(images/three-friends-with-their-arms-around-sitting-top-mountain.jpg);
+    box-shadow: 0rem 0rem 10rem 5rem black inset;">
+
+    <div class=" m-auto" style="padding-top: 18vh;">
+
+
+        <form action="/user-sign-processing" method="post" name="admin" class="text-center max-w-lg backdrop-blur-md border-teal-700 border-2 rounded-lg shadow-lg shadow-teal-700 m-auto p-10 flex flex-col form-active" id="admin-form">
+            <h1 class="text-4xl mb-10 text-teal-500">DAFTAR USER</h1>
+            <div class="w-full flex mb-5 border-teal-700 rounded-lg text-[#F2E7D5]" 
+            style="border-width: 1px;">
+                <label for="username-signup" class="bg-teal-800 flex p-2 justify-center items-center w-fit">
+                    <i class="fa-solid fa-user text-2xl"" style="color: #f2e7d5;"></i>
+                </label>
+                <input type="text" class="w-full outline-none pl-5 bg-transparent" id="username-signup" name="username" placeholder="Username" required autocomplete="on">
+            </div>
+
+            <div class="w-full flex mb-5 border-teal-700 rounded-lg text-[#F2E7D5]"
+            style="border-width: 1px;">
+                <label for="uniword-signup" class="bg-teal-800 flex p-2 justify-center items-center w-fit">
+                    <i class="fa-solid fa-font text-2xl" style="color: #f2e7d5;"></i>
+                </label>
+                <input type="text" class="w-full outline-none pl-5 bg-transparent" id="uniword-signup" name="uniword" placeholder="Uniword" required autocomplete="on">
+            </div>
+            
+            <div class="w-full flex items-center <%= messageUp.length == 0 ? 'mb-14' : 'mb-7' %> border-teal-700 rounded-lg text-[#F2E7D5]" id="password-box"
+            style="border-width: 1px;">
+                <label for="password-signup" class="bg-teal-800 flex p-2 justify-center items-center w-fit">
+                    <i class="fa-solid fa-lock text-2xl" style="color: #f2e7d5;"></i>        
+                </label>
+                <input type="password" class="w-full outline-none pl-5 bg-transparent" name="password" placeholder="Password" id="password-signup" required autocomplete="on">
+                <i class="fa-regular fa-eye mr-2 cursor-pointer" style="color: #eeeeee; display: none;" id="eye-icon-signup"></i>
+            </div>
+            <% if (messageUp.length != 0) { %>
+                <p class="text-red-500 text-left mb-4 text-sm"><%= messageUp %> </p>
+            <% } %>
+    <script>
+
+        const eyeSignup = $('#eye-icon-signup')
+        eyeSignup.on('click' , function (e) {
+            const element = $("#password-signup")
+            const nodeType = element.type;
+            switch(nodeType) {
+                case 'password' : {
+                    element.type = 'text'
+                } break;
+                default : {
+                    element.type = 'password';
+                } break;
+            }
+            eyeSignup.toggle('fa-eye-slash')
+            eyeSignup.toggle('fa-eye')
+        })
+        $('#password-signup').on('input' , () => {
+            if ($('#password-signup').value != 0) {
+                return $('#eye-icon-signup').style.display = 'block'
+            }
+            $('#eye-icon-signup').style.display = 'none'
+        })
+    </script>
+            
+            <button type="submit" class="bg-teal-700 text-lg py-2 rounded-lg text-[#F2E7D5] hover:bg-teal-800 button-transition">SUBMIT</button>
+            <a href="/main" class="block mt-3 bg-slate-300 text-lg py-2 rounded-lg text-slate-950 hover:bg-slate-400 button-transition">LANGSUNG MASUK</a>
+        </form>
+    
+    </div>
+
+    <div class="fixed" style="z-index: 99999; top: 30px; left: 30px;">
+        <div class="block">
+            <button class="p-3 bg-teal-700 rounded-xl button-transition " id="button-menu-bars">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" class="text-2xl">
+                    <style>svg{fill:#eeeeee}</style>
+                    <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+                </svg>
+            </button>
+            <ul class="flex-col mt-2 bg-teal-700 rounded-xl overflow-hidden navbar-nonactive hidden" id="navigation-bar">
+                <li class="text-[#F2E7D5]">
+                    <a href="/" class="flex items-center w-full py-3 pl-5 pr-12 text-lg bg-teal-700 hover:bg-teal-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="mr-2 block">
+                            <style>svg{fill:#eeeeee}</style>
+                            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
+                        </svg>
+                        KELUAR
+                    </a>
+                </li>
+                <li class="text-[#F2E7D5]">
+                    <a href="/user-gateway-login" class="flex items-center w-full py-3 pl-5 pr-12 text-lg bg-teal-700 hover:bg-teal-800" id="admin-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" class="mr-2 block">
+                            <style>svg{fill:#eeeeee}</style>
+                            <path d="M512 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H512zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM208 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16H304c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80H176zM376 144c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24H376z"/>
+                        </svg>
+                        MASUK
+                    </a>
+                </li>
+                <li class="text-[#F2E7D5]">
+                    <a href="" class="flex items-center w-full py-3 pl-5 pr-12 text-lg bg-teal-700 hover:bg-teal-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="mr-2 block">
+                            <style>svg{fill:#eeeeee}</style>
+                            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+                        </svg>
+                        BANTUAN
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+    var readyClick = true;
+
+    function operateFunction () {
+        const navigationBar = $('#navigation-bar');
+        const arrayClass = [...navigationBar.classList];
+
+        if (arrayClass.includes('hidden')) {
+            navigationBar.remove('navbar-nonactive');
+            navigationBar.remove('hidden');
+            navigationBar.add('flex');
+            navigationBar.add('navbar-active');
+            setTimeout(function () {
+                readyClick = true;
+            } , 300);
+        } else {
+            navigationBar.remove('navbar-active');
+            navigationBar.add('navbar-nonactive');
+            setTimeout(function () {
+                navigationBar.add('hidden');
+                navigationBar.remove('flex');
+                readyClick = true;
+            } , 300);
+        };
+    };
+    $('#button-menu-bars').on('click' , function () {
+        if (readyClick) {
+            readyClick = false;
+            
+            $('#button-menu-bars').toggle('pr-36');
+            operateFunction();
+        };
+    });
+
+    </script>
+</body>
+</html>

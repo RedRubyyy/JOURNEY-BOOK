@@ -1,0 +1,9 @@
+> databases
+    > model
+        - client.model.js
+        - admin.model.js
+
+model => db.config.js => db.connect.js 
+model => db.config.js => db.controller.js 
+
+db.connect.js => app.routes.js <= db.controller.js
